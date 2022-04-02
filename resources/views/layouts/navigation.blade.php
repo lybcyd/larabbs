@@ -34,10 +34,10 @@
           </x-slot>
 
           <x-slot name="content">
-            <x-dropdown-link :href="route('logout')">
+            <x-dropdown-link :href="route('users.show', Auth::id())">
               个人中心
             </x-dropdown-link>
-            <x-dropdown-link :href="route('logout')">
+            <x-dropdown-link :href="route('users.edit', Auth::id())">
               编辑资料
             </x-dropdown-link>
             <hr class="my-1">
