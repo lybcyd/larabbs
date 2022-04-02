@@ -46,7 +46,7 @@
         <x-label for="captcha" value="验证码" />
 
         <x-input id="captcha" class="block mt-1 w-full" type="text" name="captcha" required />
-        <img class="mt-3 mb-2 cursor-pointer border-2 rounded p-1" src="{{ captcha_src('flat') }}"
+        <img class="mt-3 mb-2 cursor-pointer border rounded p-1" src="{{ captcha_src('flat') }}"
           onclick="this.src='/captcha/flat?'+Math.random()" title="点击图片重新获取验证码">
       </div>
 

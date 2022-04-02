@@ -5,7 +5,7 @@
       <div class="flex">
         <!-- Logo -->
         <div class="shrink-0 flex items-center">
-          <a href="{{ route('dashboard') }}">
+          <a href="{{ route('root') }}">
             <p class="text-xl font-semibold text-gray-600">LaraBBS</p>
           </a>
         </div>
