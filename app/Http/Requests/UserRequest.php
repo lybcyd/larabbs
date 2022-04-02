@@ -29,6 +29,9 @@ class UserRequest extends FormRequest
             'name' => ['required', 'between:3,25', 'regex:/^[A-Za-z0-9\-\_]+$/', Rule::unique('users')->ignore(Auth::id()),],
             'email' => 'required|email',
             'introduction' => 'max:80',
+            'avatar' => 'image|dimensions:min_width=208,min_height=208',
+            'avatar.mimes' =>'头像必须是图片',
+            'avatar.dimensions' => '图片的清晰度不够，宽和高需要 208px 以上',
         ];
     }
 

@@ -5,8 +5,7 @@
   <div class="flex gap-x-10">
     <div class="hidden md:w-1/4 md:block">
       <div class="flex flex-col border rounded bg-white">
-        <img src="https://cdn.learnku.com/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/600/h/600"
-          alt="{{ $user->name }}">
+        <img src="{{ $user->avatar }}" alt="{{ $user->name }}">
         <div class="grow shrink p-4">
           <h5 class="text-xl mb-2"><strong>个人简介</strong></h5>
           <p>{{ $user->introduction }}</p>

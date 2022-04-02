@@ -9,7 +9,8 @@
           <h4 class="text-xl">编辑个人资料</h4>
         </div>
         <div class="grow shrink p-4">
-          <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8">
+          <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8"
+            enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -28,6 +29,17 @@
               <textarea name="introduction" id="introduction-field"
                 class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 rows="3">{{ old('introduction', $user->introduction) }}</textarea>
+            </div>
+            <div class="mb-4">
+              <x-label for="">用户头像</x-label>
+              <input type="file" name="avatar" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4
+              file:rounded file:border-0
+              file:bg-indigo-100 file:text-indigo-700
+              hover:file:bg-indigo-200">
+              @if($user->avatar)
+              <br>
+              <img class="" src="{{ $user->avatar }}" width="200" />
+              @endif
             </div>
             <div class="well well-sm">
               <x-button type="submit">保存</x-button>

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 border-t-4 border-t-teal-500 shadow">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 border-t-4 border-t-indigo-500 shadow">
   <!-- Primary Navigation Menu -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
@@ -18,8 +18,7 @@
             <button
               class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
               <div>
-                <img src="https://cdn.learnku.com/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60"
-                  class="inline mr-1 rounded h-8 w-8">
+                <img src="{{ Auth::user()->avatar }}" class="inline mr-1 rounded h-8 w-8">
                 <span class="align-middle">{{ Auth::user()->name }}</span>
               </div>
 
