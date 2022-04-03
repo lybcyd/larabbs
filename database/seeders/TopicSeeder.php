@@ -4,17 +4,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Topic;
 
-class DatabaseSeeder extends Seeder
+class TopicSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        $this->call(TopicSeeder::class);
+        Topic::factory()->count(100)->create();
     }
 }
