@@ -4,8 +4,8 @@
   </x-slot>
   <div class="flex justify-center">
     <div class="w-1/2">
-      <div class="flex flex-col border rounded bg-white">
-        <div class="py-2 px-4 border-b bg-slate-50">
+      <div class="flex flex-col border rounded-md bg-white">
+        <div class="py-2 px-4 border-b bg-slate-50 rounded-t-md">
           <h4 class="text-xl">编辑个人资料</h4>
         </div>
         <div class="grow shrink p-4">
@@ -33,7 +33,7 @@
             <div class="mb-4">
               <x-label for="">用户头像</x-label>
               <input type="file" name="avatar" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4
-              file:rounded file:border-0
+              file:rounded-md file:border-0
               file:bg-indigo-100 file:text-indigo-700
               hover:file:bg-indigo-200">
               @if($user->avatar)
