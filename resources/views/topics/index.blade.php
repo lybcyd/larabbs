@@ -1,10 +1,15 @@
 <x-app-layout>
   <x-slot name="title">
-    话题列表
+    {{ isset($category) ? $category->name : '话题列表' }}
   </x-slot>
 
   <div class="flex mb-5">
     <div class="w-2/3 topic-list mr-6">
+      @if (isset($category))
+      <div class="p-4 mb-4 text-sm rounded-lg text-sky-700 bg-sky-100 border border-sky-200" role="alert">
+        {{ $category->name }} ：{{ $category->description }}
+      </div>
+      @endif
       <div class="flex flex-col border rounded-md bg-white">
         <div class="py-2 px-4 border-b">
           <ul class="flex text-sm">

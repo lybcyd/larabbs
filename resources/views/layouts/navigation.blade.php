@@ -9,6 +9,23 @@
             <p class="text-xl font-semibold text-gray-600">LaraBBS</p>
           </a>
         </div>
+        <div class="ml-10 space-x-8 -my-px flex">
+          <x-nav-link :href="route('topics.index')" :active="request()->routeIs('topics.index')">
+            话题
+          </x-nav-link>
+          <x-nav-link :href="route('categories.show', 1)" :active="request()->is('categories/1')">
+            分享
+          </x-nav-link>
+          <x-nav-link :href="route('categories.show', 2)" :active="request()->is('categories/2')">
+            教程
+          </x-nav-link>
+          <x-nav-link :href="route('categories.show', 3)" :active="request()->is('categories/3')">
+            问答
+          </x-nav-link>
+          <x-nav-link :href="route('categories.show', 4)" :active="request()->is('categories/4')">
+            公告
+          </x-nav-link>
+        </div>
       </div>
       @auth
       <!-- Settings Dropdown -->

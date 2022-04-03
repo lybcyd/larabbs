@@ -21,7 +21,8 @@
       </div>
 
       <small class="items-center text-sm text-slate-500">
-        <a href="#" title="{{ $topic->category->name }}">
+        <a href="{{ route('categories.show', $topic->category_id) }}" title="{{ $topic->category->name }}"
+          class="hover:text-indigo-600">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24"
             stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -30,7 +31,8 @@
           <span class="align-middle">{{ $topic->category->name }}</span>
         </a>
         <span class="px-1">•</span>
-        <a href="{{ route('users.show', [$topic->user_id]) }}" title="{{ $topic->user->name }}">
+        <a href="{{ route('users.show', [$topic->user_id]) }}" title="{{ $topic->user->name }}"
+          class="hover:text-indigo-600">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24"
             stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"
