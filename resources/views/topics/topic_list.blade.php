@@ -12,7 +12,7 @@
     <div class="grow">
 
       <div class="mt-0 mb-1 flex justify-between">
-        <a href="{{ route('topics.show', [$topic->id]) }}" title="{{ $topic->title }}" class="hover:text-indigo-600">
+        <a href="{{ route('topics.show', [$topic->id]) }}" title="{{ $topic->title }}" class="hover:text-blue-700">
           {{ $topic->title }}
         </a>
         <a href="{{ route('topics.show', [$topic->id]) }}">
@@ -22,7 +22,7 @@
 
       <small class="items-center text-sm text-slate-500">
         <a href="{{ route('categories.show', $topic->category_id) }}" title="{{ $topic->category->name }}"
-          class="hover:text-indigo-600">
+          class="hover:text-blue-700">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24"
             stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -32,7 +32,7 @@
         </a>
         <span class="px-1">•</span>
         <a href="{{ route('users.show', [$topic->user_id]) }}" title="{{ $topic->user->name }}"
-          class="hover:text-indigo-600">
+          class="hover:text-blue-700">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24"
             stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"

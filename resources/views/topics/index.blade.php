@@ -13,15 +13,15 @@
       <div class="flex flex-col border rounded-md bg-white">
         <div class="py-2 px-4 border-b">
           <ul class="flex text-sm">
-            <li @class([ 'py-1' , 'px-3' , 'rounded-md' , 'mr-2' , 'bg-indigo-500'=> request()->order !== 'recent',
+            <li @class([ 'py-1' , 'px-3' , 'rounded-md' , 'mr-2' , 'bg-blue-600'=> request()->order !== 'recent',
               'text-white' => request()->order !== 'recent',
-              'hover:bg-indigo-50' => request()->order === 'recent',
+              'hover:bg-blue-50' => request()->order === 'recent',
               ])>
               <a href="?order=default">最后回复</a>
             </li>
-            <li @class([ 'py-1' , 'px-3' , 'rounded-md' , 'bg-indigo-500'=> request()->order === 'recent',
+            <li @class([ 'py-1' , 'px-3' , 'rounded-md' , 'bg-blue-600'=> request()->order === 'recent',
               'text-white' => request()->order === 'recent',
-              'hover:bg-indigo-50' => request()->order !== 'recent',
+              'hover:bg-blue-50' => request()->order !== 'recent',
               ])>
               <a href="?order=recent">最新发布</a>
             </li>
