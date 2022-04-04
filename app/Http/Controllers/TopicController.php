@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTopicRequest;
 use App\Http\Requests\UpdateTopicRequest;
 use App\Models\Topic;
+use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
@@ -13,9 +14,9 @@ class TopicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $topics = Topic::with('user', 'category')->paginate(30);
+        $topics = Topic::withOrder($request->order)->with('user', 'category')->paginate(30);
         return view('topics.index', compact('topics'));
     }
 
