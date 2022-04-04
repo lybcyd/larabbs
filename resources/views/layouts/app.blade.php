@@ -8,9 +8,6 @@
 
   <title>{{ $title ?? 'LaraBBS' }} - LaraBBS</title>
 
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
   <!-- Styles -->
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -18,11 +15,11 @@
   <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body class="font-sans antialiased relative">
-  <div class="min-h-screen bg-gray-100 pb-16">
+<body>
+  <div id="app">
     @include('layouts.navigation')
     <!-- Page Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 overflow-auto">
+    <main class="container">
       @include('shared.messages')
       {{ $slot }}
     </main>

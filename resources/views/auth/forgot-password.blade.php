@@ -1,37 +1,46 @@
 <x-app-layout>
-  <x-auth-card>
-    <x-slot name="logo">
-      <a href="/" class="text-3xl">
-        LaraBBS
-      </a>
-    </x-slot>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">{{ __('Reset Password') }}</div>
 
-    <div class="mb-4 text-sm text-gray-600">
-      忘记密码了？没关系。告诉我们你的邮箱地址，我们会给你发送密码重置链接，这样你就可以选择一个新的密码了。
+          <div class="card-body">
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+              {{ session('status') }}
+            </div>
+            @endif
+
+            <form method="POST" action="{{ route('password.email') }}">
+              @csrf
+
+              <div class="row mb-3">
+                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                <div class="col-md-6">
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                  @error('email')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="row mb-0">
+                <div class="col-md-6 offset-md-4">
+                  <button type="submit" class="btn btn-primary">
+                    {{ __('Send Password Reset Link') }}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-      @csrf
-
-      <!-- Email Address -->
-      <div>
-        <x-label for="email" :value="__('Email')" />
-
-        <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-          autofocus />
-      </div>
-
-      <div class="flex items-center justify-end mt-4">
-        <x-button>
-          {{ __('Email Password Reset Link') }}
-        </x-button>
-      </div>
-    </form>
-  </x-auth-card>
+  </div>
 </x-app-layout>
