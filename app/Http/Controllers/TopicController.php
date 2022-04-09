@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTopicRequest;
-use App\Http\Requests\UpdateTopicRequest;
+use App\Http\Requests\TopicRequest;
 use App\Models\Topic;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TopicController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,9 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $topic = new Topic();
+        return view('topics.form', compact('topic', 'categories'));
     }
 
     /**
@@ -36,9 +44,15 @@ class TopicController extends Controller
      * @param  \App\Http\Requests\StoreTopicRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTopicRequest $request)
+    public function store(TopicRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $topic = new Topic();
+        $topic->fill($validated);
+        $topic->user_id = Auth::id();
+        $topic->save();
+
+        return redirect()->route('topics.show', $topic->id)->with('success', '帖子创建成功！');
     }
 
     /**
@@ -70,7 +84,7 @@ class TopicController extends Controller
      * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTopicRequest $request, Topic $topic)
+    public function update(TopicRequest $request, Topic $topic)
     {
         //
     }

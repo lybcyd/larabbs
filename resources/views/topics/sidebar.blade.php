@@ -1,5 +1,7 @@
-<div class="flex flex-col border rounded-md bg-white">
-  <div class="grow shrink p-4">
-    右边导航栏
+<div class="card">
+  <div class="card-body">
+    <a href="{{ route('topics.create') }}" class="btn btn-success w-100" aria-label="Left Align">
+      <i class="fas fa-pencil-alt mr-2"></i> 新建帖子
+    </a>
   </div>
 </div>
