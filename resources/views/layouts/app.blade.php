@@ -13,6 +13,8 @@
 
   <!-- Scripts -->
   <script src="{{ mix('js/app.js') }}" defer></script>
+
+  {{ $scripts ?? '' }}
 </head>
 
 <body>

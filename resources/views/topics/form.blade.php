@@ -38,8 +38,11 @@
               </div>
 
               <div class="mb-3">
-                <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。"
-                  required>{{ old('body', $topic->body) }}</textarea>
+                <textarea name="body" hidden id="editor" required></textarea>
+                <div id="editor-wrapper">
+                  <div id="toolbar-container"></div>
+                  <div id="editor-container"></div>
+                </div>
               </div>
 
               <div class="well well-sm">
@@ -51,4 +54,8 @@
       </div>
     </div>
   </div>
+
+  <x-slot name="scripts">
+    <script src="{{ mix('js/topic_form.js') }}" defer></script>
+  </x-slot>
 </x-app-layout>
