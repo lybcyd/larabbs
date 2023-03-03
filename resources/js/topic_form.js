@@ -6,6 +6,16 @@ const editorConfig = {
     const html = editor.getHtml();
     document.getElementById("editor").value = html;
   },
+  MENU_CONF: {},
+};
+
+editorConfig.MENU_CONF["uploadImage"] = {
+  server: "/upload_image",
+  headers: {
+    "X-CSRF-TOKEN": document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute("content"),
+  },
 };
 
 const editor = createEditor({

@@ -270,6 +270,13 @@ var editorConfig = {
   onChange: function onChange(editor) {
     var html = editor.getHtml();
     document.getElementById("editor").value = html;
+  },
+  MENU_CONF: {}
+};
+editorConfig.MENU_CONF["uploadImage"] = {
+  server: "/upload_image",
+  headers: {
+    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
   }
 };
 var editor = (0,_wangeditor_editor__WEBPACK_IMPORTED_MODULE_0__.createEditor)({

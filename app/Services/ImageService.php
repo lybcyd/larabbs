@@ -7,25 +7,31 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageService
 {
-    public function save($file, $folder, $maxWidth = false)
+    public function save($file, $folder, $maxWidth = false, $cut = true)
     {
         $folder = "public/images/$folder/" . date("Ym/d", time());
         $path = $file->store($folder);
-        $validated['avatar'] = Storage::url($path);
         $extension = $file->extension();
         if ($maxWidth && $extension != 'gif') {
-            $this->reduceSize(Storage::path($path), $maxWidth);
+            $this->reduceSize(Storage::path($path), $maxWidth, $cut);
         }
 
         return Storage::url($path);;
     }
 
-    public function reduceSize($filePath, $maxWidth)
+    public function reduceSize($filePath, $maxWidth, $cut)
     {
         $image = Image::make($filePath);
-        $image->fit($maxWidth, null, function ($constraint) {
-            $constraint->upsize();
-        });
+        if ($cut) {
+            $image->fit($maxWidth, null, function ($constraint) {
+                $constraint->upsize();
+            });
+        } else {
+            $image->resize($maxWidth, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+        }
         $image->save();
     }
 }

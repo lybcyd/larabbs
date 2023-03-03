@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TopicRequest;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -98,5 +99,25 @@ class TopicController extends Controller
     public function destroy(Topic $topic)
     {
         //
+    }
+
+    public function uploadImage(Request $request, ImageService $service)
+    {
+        $data = [
+            'errno' => 1,
+            'message' => '上传失败!'
+        ];
+        if ($file = $request->file('wangeditor-uploaded-image')) {
+            $result = $service->save($file, 'topics', 1024, false);
+            if ($result) {
+                $data = [
+                    'errno' => 0,
+                    'data' => [
+                        'url' => $result
+                    ],
+                ];
+            }
+        }
+        return $data;
     }
 }
