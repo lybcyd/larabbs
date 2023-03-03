@@ -86,3 +86,20 @@ footer > .container {
 #editor-container {
   height: 500px;
 }
+
+/* Topic Show Page */
+
+@import "topic_body";
+
+.topics-show-page {
+
+    .card {
+        padding: 15px;
+
+        h1 {
+            margin: 0.4em auto 0.6em;
+            font-size: 28px;
+            line-height: 38px;
+        }
+    }
+}

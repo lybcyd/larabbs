@@ -7,6 +7,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ $title ?? 'LaraBBS' }} - LaraBBS</title>
+  <meta name="description" content="{{ $description ?? 'LaraBBS 爱好者社区' }}">
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
