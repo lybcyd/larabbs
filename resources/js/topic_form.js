@@ -24,6 +24,10 @@ const editor = createEditor({
   mode: "default",
 });
 
+if (document.getElementById("editor").value) {
+  editor.setHtml(document.getElementById("editor").value);
+}
+
 const toolbarConfig = {};
 const toolbar = createToolbar({
   editor,

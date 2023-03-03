@@ -13,6 +13,7 @@ class TopicController extends Controller
 {
     public function __construct()
     {
+        $this->authorizeResource(Topic::class, 'topic');
         $this->middleware('auth')->except('index', 'show');
     }
 
@@ -75,7 +76,8 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
-        //
+        $categories = Category::all();
+        return view('topics.form', compact('topic', 'categories'));
     }
 
     /**

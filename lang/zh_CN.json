@@ -55,6 +55,7 @@
     "Showing": "显示中",
     "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.": "谢谢您的注册！在开始之前，在开始之前，您可以通过点击我们刚刚给您发送的链接来验证您的电子邮件地址，如果您没有收到邮件，我们将很乐意再给您发送一封邮件。",
     "The given data was invalid.": "给定的数据无效。",
+    "This action is unauthorized.": "权限不足",
     "This is a secure area of the application. Please confirm your password before continuing.": "请在继续之前确认您的密码。",
     "This password reset link will expire in :count minutes.": "这个重设密码链接将会在 :count 分钟后失效。",
     "to": "至",

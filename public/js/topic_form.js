@@ -284,6 +284,11 @@ var editor = (0,_wangeditor_editor__WEBPACK_IMPORTED_MODULE_0__.createEditor)({
   config: editorConfig,
   mode: "default"
 });
+
+if (document.getElementById("editor").value) {
+  editor.setHtml(document.getElementById("editor").value);
+}
+
 var toolbarConfig = {};
 var toolbar = (0,_wangeditor_editor__WEBPACK_IMPORTED_MODULE_0__.createToolbar)({
   editor: editor,
