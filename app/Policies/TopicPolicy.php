@@ -65,7 +65,7 @@ class TopicPolicy
      */
     public function delete(User $user, Topic $topic)
     {
-        return true;
+        return $topic->user_id == $user->id;
     }
 
     /**
@@ -77,7 +77,7 @@ class TopicPolicy
      */
     public function restore(User $user, Topic $topic)
     {
-        return true;
+        return $topic->user_id == $user->id;
     }
 
     /**
@@ -89,6 +89,6 @@ class TopicPolicy
      */
     public function forceDelete(User $user, Topic $topic)
     {
-        return true;
+        return $topic->user_id == $user->id;
     }
 }

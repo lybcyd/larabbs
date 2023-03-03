@@ -89,7 +89,9 @@ class TopicController extends Controller
      */
     public function update(TopicRequest $request, Topic $topic)
     {
-        //
+        $topic->update($request->all());
+
+        return redirect()->route('topics.show', $topic->id)->with('success', '更新成功！');
     }
 
     /**
@@ -100,7 +102,9 @@ class TopicController extends Controller
      */
     public function destroy(Topic $topic)
     {
-        //
+        $topic->delete();
+
+        return redirect()->route('topics.index')->with('success', '成功删除！');
     }
 
     public function uploadImage(Request $request, ImageService $service)
