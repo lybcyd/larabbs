@@ -10,11 +10,13 @@
         "intervention/image": "^2.7",
         "laravel/breeze": "^1.9",
         "laravel/framework": "^9.2",
+        "laravel/horizon": "^5.14",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "mews/captcha": "~3.0",
         "mews/purifier": "^3.3",
-        "overtrue/pinyin": "^5.0"
+        "overtrue/pinyin": "^5.0",
+        "predis/predis": "~1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
