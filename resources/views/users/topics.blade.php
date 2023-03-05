@@ -3,7 +3,7 @@
 <ul class="list-group list-group-flush">
   @foreach ($topics as $topic)
   <li class="list-group-item">
-    <a class="text-decoration-none" href="{{ route('topics.show', $topic->id) }}">
+    <a class="text-decoration-none" href="{{ $topic->link() }}">
       {{ $topic->title }}
     </a>
     <span class="meta float-end text-secondary">

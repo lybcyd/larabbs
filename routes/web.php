@@ -20,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'root'])->name('root');
 
 Route::resource('users', UserController::class)->only('show', 'update', 'edit');
-Route::resource('topics', TopicController::class);
+Route::resource('topics', TopicController::class)->only('index', 'create', 'store', 'update', 'edit', 'destroy');
 Route::resource('categories', CategoryController::class)->only('show');
 
+Route::get('topics/{topic}/{slug?}', [TopicController::class, 'show'])->name('topics.show');
 Route::post('upload_image', [TopicController::class, 'uploadImage'])->name('topics.upload_image');
 
 require __DIR__ . '/auth.php';
