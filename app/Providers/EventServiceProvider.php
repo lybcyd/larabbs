@@ -8,7 +8,9 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Verified;
 use App\Listeners\LogVerifiedUser;
+use App\Models\Reply;
 use App\Models\Topic;
+use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
 
 class EventServiceProvider extends ServiceProvider
@@ -35,6 +37,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Topic::observe(TopicObserver::class);
+        Reply::observe(ReplyObserver::class);
     }
 
     /**

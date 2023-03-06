@@ -2,30 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreReplyRequest;
-use App\Http\Requests\UpdateReplyRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReplyRequest;
 use App\Models\Reply;
 
 class ReplyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $this->middleware('auth');
+        $this->authorizeResource(Topic::class, 'topic');
     }
 
     /**
@@ -34,44 +20,17 @@ class ReplyController extends Controller
      * @param  \App\Http\Requests\StoreReplyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReplyRequest $request)
+    public function store(ReplyRequest $request)
     {
-        //
+        $reply = new Reply;
+        $reply->content = $request->content;
+        $reply->user_id = Auth::id();
+        $reply->topic_id = $request->topic_id;
+        $reply->save();
+
+        return redirect()->to($reply->topic->link())->with('success', '评论创建成功！');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Reply  $reply
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reply $reply)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Reply  $reply
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reply $reply)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateReplyRequest  $request
-     * @param  \App\Models\Reply  $reply
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateReplyRequest $request, Reply $reply)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -81,6 +40,7 @@ class ReplyController extends Controller
      */
     public function destroy(Reply $reply)
     {
-        //
+        $reply->delete();
+        return redirect()->route('replies.index')->with('success', '评论删除成功！');
     }
 }

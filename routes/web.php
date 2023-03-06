@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +26,7 @@ Route::resource('categories', CategoryController::class)->only('show');
 
 Route::get('topics/{topic}/{slug?}', [TopicController::class, 'show'])->name('topics.show');
 Route::post('upload_image', [TopicController::class, 'uploadImage'])->name('topics.upload_image');
+
+Route::resource('replies', ReplyController::class)->only('store', 'destroy');
 
 require __DIR__ . '/auth.php';

@@ -18,7 +18,7 @@ class ReplyPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class ReplyPolicy
      */
     public function view(User $user, Reply $reply)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class ReplyPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class ReplyPolicy
      */
     public function update(User $user, Reply $reply)
     {
-        //
+        return true;
     }
 
     /**
@@ -65,7 +65,8 @@ class ReplyPolicy
      */
     public function delete(User $user, Reply $reply)
     {
-        //
+        return $user->id == $reply->user_id ||
+            $user->id == $reply->topic->user_id;
     }
 
     /**
@@ -77,7 +78,8 @@ class ReplyPolicy
      */
     public function restore(User $user, Reply $reply)
     {
-        //
+        return $user->id == $reply->user_id ||
+            $user->id == $reply->topic->user_id;
     }
 
     /**
@@ -89,6 +91,7 @@ class ReplyPolicy
      */
     public function forceDelete(User $user, Reply $reply)
     {
-        //
+        return $user->id == $reply->user_id ||
+            $user->id == $reply->topic->user_id;
     }
 }
