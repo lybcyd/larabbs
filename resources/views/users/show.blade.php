@@ -27,15 +27,32 @@
       <div class="card">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item"><a class="nav-link active" href="#">Ta 的话题</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Ta 的回复</a></li>
+            <li class="nav-item">
+              <a @class([ 'nav-link' , 'active'=> null == (request()->query('tab'))])
+                href="{{ route('users.show', $user->id) }}">
+                Ta 的话题
+              </a>
+            </li>
+            <li class="nav-item">
+              <a @class([ 'nav-link' , 'active'=> request()->query('tab') == 'replies'])
+                href="{{ route('users.show', [$user->id, 'tab' => 'replies']) }}">
+                Ta 的回复
+              </a>
+            </li>
           </ul>
         </div>
         <div class="card-body">
-          @include('users.topics', ['topics' => $user->topics()->recent()->paginate(5)])
+          @if (request()->query('tab')=='replies')
+          @include('users._replies', [
+          'replies' => $user->replies()->with('topic')->latest()->paginate(5),
+          ])
+          @else
+          @include('users.topics', [
+          'topics' => $user->topics()->latest()->paginate(5),
+          ])
+          @endif
         </div>
       </div>
-
     </div>
   </div>
 </x-app-layout>
