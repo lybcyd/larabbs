@@ -11,7 +11,7 @@ class ReplyController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->authorizeResource(Topic::class, 'topic');
+        $this->authorizeResource(Reply::class, 'reply');
     }
 
     /**
@@ -41,6 +41,6 @@ class ReplyController extends Controller
     public function destroy(Reply $reply)
     {
         $reply->delete();
-        return redirect()->route('replies.index')->with('success', '评论删除成功！');
+        return redirect()->to($reply->topic->link())->with('success', '评论删除成功！');
     }
 }

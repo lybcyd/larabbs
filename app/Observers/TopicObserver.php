@@ -6,6 +6,7 @@ use App\Jobs\TranslateSlug;
 use App\Models\Topic;
 use App\Services\SlugService;
 use Mews\Purifier\Facades\Purifier;
+use Illuminate\Support\Facades\DB;
 
 class TopicObserver
 {
@@ -27,6 +28,11 @@ class TopicObserver
         if (!$topic->slug) {
             dispatch(new TranslateSlug($topic, $this->slugService));
         }
+    }
+
+    public function deleted(Topic $topic)
+    {
+        DB::table('replies')->where('topic_id', $topic->id)->delete();
     }
 
     private function make_excerpt($value, $length = 200)
