@@ -8,6 +8,7 @@ use App\Models\Reply;
 
 class ReplySeeder extends Seeder
 {
+    use WithoutModelEvents;
     /**
      * Run the database seeds.
      *
