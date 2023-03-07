@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +29,6 @@ Route::get('topics/{topic}/{slug?}', [TopicController::class, 'show'])->name('to
 Route::post('upload_image', [TopicController::class, 'uploadImage'])->name('topics.upload_image');
 
 Route::resource('replies', ReplyController::class)->only('store', 'destroy');
+Route::resource('notifications', NotificationController::class)->only('index');
 
 require __DIR__ . '/auth.php';
