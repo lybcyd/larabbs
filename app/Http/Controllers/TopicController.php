@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TopicRequest;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Models\User;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class TopicController extends Controller
 {
@@ -20,12 +22,12 @@ class TopicController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, User $user)
     {
         $topics = Topic::withOrder($request->order)->with('user', 'category')->paginate(20);
-        return view('topics.index', compact('topics'));
+        $active_users = $user->getActiveUsers();
+        return view('topics.index', compact('topics', 'active_users'));
     }
 
     /**
