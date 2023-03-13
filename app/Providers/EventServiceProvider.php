@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Link;
+use App\Observers\LinkObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -12,6 +14,7 @@ use App\Models\Reply;
 use App\Models\Topic;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
+use Termwind\Components\Li;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -38,6 +41,7 @@ class EventServiceProvider extends ServiceProvider
     {
         Topic::observe(TopicObserver::class);
         Reply::observe(ReplyObserver::class);
+        Link::observe(LinkObserver::class);
     }
 
     /**

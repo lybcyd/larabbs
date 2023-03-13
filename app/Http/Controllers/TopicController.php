@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TopicRequest;
+use App\Models\Link;
 use App\Models\Topic;
 use App\Models\Category;
 use App\Models\User;
@@ -27,7 +28,8 @@ class TopicController extends Controller
     {
         $topics = Topic::withOrder($request->order)->with('user', 'category')->paginate(20);
         $active_users = $user->getActiveUsers();
-        return view('topics.index', compact('topics', 'active_users'));
+        $links = Link::getAllCached();
+        return view('topics.index', compact('topics', 'active_users', 'links'));
     }
 
     /**

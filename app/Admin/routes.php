@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin\Controllers\LinkController;
 use Illuminate\Routing\Router;
 
 Admin::routes();
@@ -13,5 +14,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('users', UserController::class);
+    $router->resource('links', LinkController::class);
 
 });
