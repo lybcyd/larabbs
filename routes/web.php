@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PageController::class, 'root'])->name('root');
+Route::get('/', [TopicController::class, 'index'])->name('root');
 
 Route::resource('users', UserController::class)->only('show', 'update', 'edit');
 Route::resource('topics', TopicController::class)->only('index', 'create', 'store', 'update', 'edit', 'destroy');
